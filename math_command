@@ -1,0 +1,32 @@
+(* 隣接行列の作成 *)
+SetDirectory["/home/kamano/TEST_COLLECTION/Chemical-form_search_by_Eigen"]
+<<"chemAdjMat.txt";
+<<"chemStdNameAll.txt";
+<<"nameVSadjmat.txt";
+(* Missingの除去 *)
+<<"nameVSadjmatSel.txt";
+
+(* プログラムのロード *)
+<<"/home/kamano/gitsrc/MATH_SCRIPT/SCRIPTS/List_operations.txt" 
+<<"/home/kamano/gitsrc/MATH_SCRIPT/SCRIPTS/Matrix_operations.txt" 
+<<"/home/kamano/gitsrc/MATH_SCRIPT/SCRIPTS/Chemicalform_operations.txt"
+
+(* パフォーマンステスト *)
+AbsoluteTiming[tmp=ParallelTable[ Table[  eigenSpectrumDistance[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,4}]; ]
+AbsoluteTiming[tmp=ParallelTable[ Table[  eigenSpectrumDistance[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,8}]; ]
+AbsoluteTiming[tmp=Table[ Table[  eigenSpectrumDistance[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,8}]; ]
+
+(* 本番 1.5days 予定 *)
+dTab=ParallelTable[ Table[  eigenSpectrumDistance[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,Length[nameVSadjmatSel]}]; 
+Save["dTab.wl",dTab]
+(* sTab=Table[ Table[  eigenSpectrumSim[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,Length[nameVSadjmatSel]}]; *)
+sTab=ParallelTable[ Table[  eigenSpectrumSim[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,Length[nameVSadjmatSel]}];
+Save["sTab.wl",sTab]
+
+(* ゼロ距離のペアのセレクション *)
+"zeroPosNonself.txt"
+"zeroPosNonselfName.tsv"
+(* ボンドがない化合物がある->イオン結合は表示されない->すべてが共有結合である化合物をChemicalData[]で選択可能か? *)
+
+(* chenNameからadjMatを引く *)
+nameToAdjm=Map[#[[1]]->#[[2]]&,nameVSadjmatSel];
