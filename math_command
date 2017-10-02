@@ -16,7 +16,7 @@ AbsoluteTiming[tmp=ParallelTable[ Table[  eigenSpectrumDistance[nameVSadjmatSel[
 AbsoluteTiming[tmp=ParallelTable[ Table[  eigenSpectrumDistance[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,8}]; ]
 AbsoluteTiming[tmp=Table[ Table[  eigenSpectrumDistance[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,8}]; ]
 
-(* 本番 1.5days 予定 *)
+(* 本番 1.5days 予定 Distanceと Sim両方行う *)
 dTab=ParallelTable[ Table[  eigenSpectrumDistance[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,Length[nameVSadjmatSel]}]; 
 Save["dTab.wl",dTab]
 (* sTab=Table[ Table[  eigenSpectrumSim[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,Length[nameVSadjmatSel]}]; *)
@@ -26,7 +26,9 @@ Save["sTab.wl",sTab]
 (* ゼロ距離のペアのセレクション *)
 "zeroPosNonself.txt"
 "zeroPosNonselfName.tsv"
-(* ボンドがない化合物がある->イオン結合は表示されない->すべてが共有結合である化合物をChemicalData[]で選択可能か? *)
+(* ボンドがない化合物がある->イオン結合は表示されない->水と水溶液が同じ->すべてが共有結合である化合物をChemicalData[]で選択可能か? *)
+(* ->もとの分子には薄く結合を入れてみる *)
 
 (* chenNameからadjMatを引く *)
 nameToAdjm=Map[#[[1]]->#[[2]]&,nameVSadjmatSel];
+adjFromName=Association[nameToAdjm];
