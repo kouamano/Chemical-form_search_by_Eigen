@@ -35,3 +35,5 @@ adjFromName=Association[nameToAdjm];
 
 (* データの読み込み *)
 Get["/home/kamano/gitsrc/Chemical-form_search_by_Eigen/dTab.wl"];
+Get["/home/kamano/gitsrc/Chemical-form_search_by_Eigen/nameVSadjmatSel.txt"];
+
