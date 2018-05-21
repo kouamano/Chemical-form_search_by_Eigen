@@ -32,3 +32,6 @@ Save["sTab.wl",sTab]
 (* chenNameからadjMatを引く *)
 nameToAdjm=Map[#[[1]]->#[[2]]&,nameVSadjmatSel];
 adjFromName=Association[nameToAdjm];
+
+(* データの読み込み *)
+Get["/home/kamano/gitsrc/Chemical-form_search_by_Eigen/dTab.wl"];
