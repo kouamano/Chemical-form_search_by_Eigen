@@ -1,2 +1,18 @@
 #candidate生成
-固有値固有ベクトルからもとの行列を生成
+固有値固有ベクトルからもとの行列を生成   
+https://math.stackexchange.com/questions/1119668/determine-a-matrix-knowing-its-eigenvalues-and-eigenvectors
+
+## 対象行列の場合
+u,w,v = SVD(m) = u w Inv(v)
+Eval,Evec = Eig(m)
+
+w = Diag(Eval) //行列化
+
+Evec = Transpose(u)
+u = Transpose(Evec)
+
+Transpose(Inv(v)) = u
+Transpose(Inv(u)) = v
+
+Transpose(Evec),Diag(Eval),Transpose(Inv(Transpose(Evec))) = SVD(m) = u w Inv(v)
+
