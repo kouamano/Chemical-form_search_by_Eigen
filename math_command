@@ -1,10 +1,10 @@
 (* 隣接行列の作成 *)
 SetDirectory["/home/kamano/TEST_COLLECTION/Chemical-form_search_by_Eigen"]
-<<"chemAdjMat.txt";
-<<"chemStdNameAll.txt";
-<<"nameVSadjmat.txt";
+<<"/BANK/ProjectData/Chemical-form_search_by_Eigen/chemAdjMat.txt";
+<<"/BANK/ProjectData/Chemical-form_search_by_Eigen/chemStdNameAll.txt";
+<<"/BANK/ProjectData/Chemical-form_search_by_Eigen/nameVSadjmat.txt";
 (* Missingの除去 *)
-<<"nameVSadjmatSel.txt";
+<<"/BANK/ProjectData/Chemical-form_search_by_Eigen/nameVSadjmatSel.txt";
 
 (* プログラムのロード *)
 <<"/home/kamano/gitsrc/MATH_SCRIPT/SCRIPTS/List_operations.txt" 
