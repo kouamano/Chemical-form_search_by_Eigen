@@ -1,0 +1,195 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6689,        187]
+NotebookOptionsPosition[      4803,        144]
+NotebookOutlinePosition[      5208,        161]
+CellTagsIndexPosition[      5165,        158]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["chemical compound indices on large matrix space", "Title",
+ CellChangeTimes->{{3.864612319893545*^9, 
+  3.8646123675255537`*^9}},ExpressionUUID->"2e79a1fb-7369-4463-ad42-\
+7ca3eda62526"],
+
+Cell[CellGroupData[{
+
+Cell["Program", "Section",
+ CellChangeTimes->{{3.864612299934757*^9, 
+  3.86461230913982*^9}},ExpressionUUID->"9bd8516d-1add-43a3-b462-\
+05c0872034ae"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"basedir", "=", 
+  "\"\</Users/kouamano/gitsrc/MATH_SCRIPT/SCRIPTS/\>\""}]], "Input",
+ CellChangeTimes->{{3.8646124112250433`*^9, 3.86461246723955*^9}, {
+  3.8646125637573547`*^9, 3.864612592762869*^9}, {3.864612643115615*^9, 
+  3.864612645548514*^9}},
+ CellLabel->"In[15]:=",ExpressionUUID->"ed2f63bb-96bc-4cc1-87a0-6ccd69b133f6"],
+
+Cell[BoxData["\<\"/Users/kouamano/gitsrc/MATH_SCRIPT/SCRIPTS/\"\>"], "Output",
+ CellChangeTimes->{3.864612483581025*^9, 3.8646126464061117`*^9},
+ CellLabel->"Out[15]=",ExpressionUUID->"ab2e6326-ab40-4f76-b84a-7abe1713f14d"]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{"<<", 
+  RowBox[{"(", 
+   RowBox[{"basedir", "<>", "\"\<List_operations.txt\>\""}], ")"}]}], "\n", 
+ RowBox[{"<<", 
+  RowBox[{"(", 
+   RowBox[{"basedir", "<>", "\"\<Matrix_operations.txt\>\""}], 
+   ")"}]}], "\n", 
+ RowBox[{"<<", 
+  RowBox[{"(", 
+   RowBox[{"basedir", "<>", "\"\<Chemicalform_operations.txt\>\""}], 
+   ")"}]}]}], "Input",
+ CellChangeTimes->{{3.864612399941476*^9, 3.86461240005202*^9}, {
+  3.864612473142824*^9, 3.8646125347409773`*^9}, {3.8646125698118553`*^9, 
+  3.86461258830751*^9}},
+ CellLabel->"In[16]:=",ExpressionUUID->"66eae451-f0ee-4ada-a054-ee71f4c4666f"],
+
+Cell["\:5171\:901a\:884c\:5217\:3092\:3064\:304f\:308b\:30d7\:30ed\:30b0\:30e9\
+\:30e0\:304c\:306a\:3044\:3002\:3002\:3002", "Text",
+ CellChangeTimes->{{3.8646127676975822`*^9, 
+  3.864612781183749*^9}},ExpressionUUID->"c9a6aad4-bb5d-46e0-a4d3-\
+44b8477c5fc9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Data", "Section",
+ CellChangeTimes->{{3.86461238489674*^9, 
+  3.864612391501668*^9}},ExpressionUUID->"b18c0adb-3d2b-42ad-b605-\
+443f447f1e20"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SetDirectory", "[", 
+  "\"\</Volumes/share/home/kamano/TEST_COLLECTION/Chemical-form_search_by_\
+Eigen\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.864611816799267*^9, 3.86461183459236*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"53f7c5ec-0ed0-488e-b59d-36dda27eda42"],
+
+Cell[BoxData["\<\"/Volumes/share/home/kamano/TEST_COLLECTION/Chemical-form_\
+search_by_Eigen\"\>"], "Output",
+ CellChangeTimes->{3.86461183592773*^9, 3.8646120433795223`*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"e0a93b3e-78fd-4df9-81fc-8f9e8ac6857d"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{"Get", "[", "\"\<nameVSadjmat.txt\>\"", "]"}], ";"}], 
+  "*)"}]], "Input",
+ CellChangeTimes->{{3.864612046154141*^9, 3.864612048485977*^9}, {
+  3.864612095704062*^9, 3.864612118574421*^9}, {3.864612263900207*^9, 
+  3.864612266883554*^9}},ExpressionUUID->"7bb41992-ef56-4d1e-82b1-\
+e43f085bbe75"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Dimensions", "[", "nameVSadjmat", "]"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.86461216995566*^9, 3.8646121777303677`*^9}, {
+  3.864612273620892*^9, 
+  3.864612277243606*^9}},ExpressionUUID->"4096631d-5f2a-4588-a350-\
+e39a3153c8f4"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"44089", ",", "2"}], "}"}]], "Output",
+ CellChangeTimes->{3.864612178203456*^9},
+ CellLabel->"Out[4]=",ExpressionUUID->"4913a9de-fde6-45d7-8ef7-013d8ca74583"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Get", "[", "\"\<nameVSadjmatSel.txt\>\"", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.864612206542645*^9, 3.864612214245858*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"6f8b68e4-bd53-4b6c-b34b-c8e76912a6f2"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dimensions", "[", "nameVSadjmatSel", "]"}]], "Input",
+ CellChangeTimes->{{3.864612250509437*^9, 3.864612257563595*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"56d2d966-ea8c-473f-8678-a6fa600e5da9"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"35582", ",", "2"}], "}"}]], "Output",
+ CellChangeTimes->{3.864612257834422*^9},
+ CellLabel->"Out[6]=",ExpressionUUID->"61007b90-8769-4d33-820c-d24585792af5"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 755},
+WindowMargins->{{3, Automatic}, {Automatic, 0}},
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) \
+(2020\:5e746\:670822\:65e5)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"c93525ce-354a-43fe-b257-e56fe6f3a038"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 192, 3, 160, "Title",ExpressionUUID->"2e79a1fb-7369-4463-ad42-7ca3eda62526"],
+Cell[CellGroupData[{
+Cell[797, 29, 151, 3, 67, "Section",ExpressionUUID->"9bd8516d-1add-43a3-b462-05c0872034ae"],
+Cell[CellGroupData[{
+Cell[973, 36, 354, 6, 30, "Input",ExpressionUUID->"ed2f63bb-96bc-4cc1-87a0-6ccd69b133f6"],
+Cell[1330, 44, 223, 2, 34, "Output",ExpressionUUID->"ab2e6326-ab40-4f76-b84a-7abe1713f14d"]
+}, Open  ]],
+Cell[1568, 49, 608, 15, 73, "Input",ExpressionUUID->"66eae451-f0ee-4ada-a054-ee71f4c4666f"],
+Cell[2179, 66, 260, 4, 35, "Text",ExpressionUUID->"c9a6aad4-bb5d-46e0-a4d3-44b8477c5fc9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2476, 75, 148, 3, 67, "Section",ExpressionUUID->"b18c0adb-3d2b-42ad-b605-443f447f1e20"],
+Cell[CellGroupData[{
+Cell[2649, 82, 292, 5, 67, "Input",ExpressionUUID->"53f7c5ec-0ed0-488e-b59d-36dda27eda42"],
+Cell[2944, 89, 252, 3, 34, "Output",ExpressionUUID->"e0a93b3e-78fd-4df9-81fc-8f9e8ac6857d"]
+}, Open  ]],
+Cell[3211, 95, 347, 8, 30, "Input",ExpressionUUID->"7bb41992-ef56-4d1e-82b1-e43f085bbe75"],
+Cell[CellGroupData[{
+Cell[3583, 107, 275, 6, 30, "Input",ExpressionUUID->"4096631d-5f2a-4588-a350-e39a3153c8f4"],
+Cell[3861, 115, 197, 4, 34, "Output",ExpressionUUID->"4913a9de-fde6-45d7-8ef7-013d8ca74583"]
+}, Open  ]],
+Cell[4073, 122, 244, 4, 44, "Input",ExpressionUUID->"6f8b68e4-bd53-4b6c-b34b-c8e76912a6f2"],
+Cell[CellGroupData[{
+Cell[4342, 130, 221, 3, 44, "Input",ExpressionUUID->"56d2d966-ea8c-473f-8678-a6fa600e5da9"],
+Cell[4566, 135, 197, 4, 34, "Output",ExpressionUUID->"61007b90-8769-4d33-820c-d24585792af5"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
