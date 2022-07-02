@@ -1,22 +1,24 @@
 (* 隣接行列の作成 *)
+SetDirectory["/Users/kouamano/gitsrc/Chemical-form_search_by_Eigen"]
 SetDirectory["/home/kamano/TEST_COLLECTION/Chemical-form_search_by_Eigen"]
-<<"/BANK/ProjectData/Chemical-form_search_by_Eigen/chemAdjMat.txt";
-<<"/BANK/ProjectData/Chemical-form_search_by_Eigen/chemStdNameAll.txt";
-<<"/BANK/ProjectData/Chemical-form_search_by_Eigen/nameVSadjmat.txt";
+<<"chemAdjMat.txt";
+<<"chemStdNameAll.txt";
+<<"nameVSadjmat.txt";
 (* Missingの除去 *)
-<<"/BANK/ProjectData/Chemical-form_search_by_Eigen/nameVSadjmatSel.txt";
+<<"nameVSadjmatSel.txt";
 
 (* プログラムのロード *)
-<<"/home/kamano/gitsrc/MATH_SCRIPT/SCRIPTS/List_operations.txt" 
-<<"/home/kamano/gitsrc/MATH_SCRIPT/SCRIPTS/Matrix_operations.txt" 
-<<"/home/kamano/gitsrc/MATH_SCRIPT/SCRIPTS/Chemicalform_operations.txt"
+prgdir="/Users/kouamano/gitsrc/MATH_SCRIPT/SCRIPTS/"
+Get[prgdir<>"List_operations.txt"]
+Get[prgdir<>"Matrix_operations.txt"]
+Get[prgdir<>"Chemicalform_operations.txt"]
 
 (* パフォーマンステスト *)
 AbsoluteTiming[tmp=ParallelTable[ Table[  eigenSpectrumDistance[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,4}]; ]
 AbsoluteTiming[tmp=ParallelTable[ Table[  eigenSpectrumDistance[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,8}]; ]
 AbsoluteTiming[tmp=Table[ Table[  eigenSpectrumDistance[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,8}]; ]
 
-(* 本番 1.5days 予定 Distanceと Sim両方行う *)
+(* 本番 1.5days 予定 *)
 dTab=ParallelTable[ Table[  eigenSpectrumDistance[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,Length[nameVSadjmatSel]}]; 
 Save["dTab.wl",dTab]
 (* sTab=Table[ Table[  eigenSpectrumSim[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,Length[nameVSadjmatSel]}]; *)
@@ -33,7 +35,7 @@ Save["sTab.wl",sTab]
 nameToAdjm=Map[#[[1]]->#[[2]]&,nameVSadjmatSel];
 adjFromName=Association[nameToAdjm];
 
-(* データの読み込み *)
-Get["/home/kamano/gitsrc/Chemical-form_search_by_Eigen/dTab.wl"];
-Get["/home/kamano/gitsrc/Chemical-form_search_by_Eigen/nameVSadjmatSel.txt"];
+(* 共通要素 *)
+AdjmatSelTr=Map[Tr[#[[2]],List]&,nameVSadjmatSel];
+AdjmatSelTrUnion=Apply[seqUnionM,AdjmatSelTr];
 
