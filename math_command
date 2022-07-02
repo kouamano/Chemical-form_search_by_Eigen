@@ -6,6 +6,7 @@ SetDirectory["/home/kamano/TEST_COLLECTION/Chemical-form_search_by_Eigen"]
 <<"nameVSadjmat.txt";
 (* Missingの除去 *)
 <<"nameVSadjmatSel.txt";
+adjmatSel=Map[#[[2]]&,nameVSadjmatSel];
 
 (* プログラムのロード *)
 prgdir="/Users/kouamano/gitsrc/MATH_SCRIPT/SCRIPTS/"
@@ -38,4 +39,5 @@ adjFromName=Association[nameToAdjm];
 (* 共通要素 *)
 AdjmatSelTr=Map[Tr[#[[2]],List]&,nameVSadjmatSel];
 AdjmatSelTrUnion=Apply[seqUnionM,AdjmatSelTr];
-
+(* 共通要素を使ったexpand *)
+adjmatSelExpand=Map[expandAdjMat[#,AdjmatSelTrUnion]&,adjmatSel];
