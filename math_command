@@ -19,14 +19,15 @@ AbsoluteTiming[tmp=ParallelTable[ Table[  eigenSpectrumDistance[nameVSadjmatSel[
 AbsoluteTiming[tmp=ParallelTable[ Table[  eigenSpectrumDistance[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,8}]; ]
 AbsoluteTiming[tmp=Table[ Table[  eigenSpectrumDistance[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,8}]; ]
 
-(* 本番 4days 予定 *)
+(* 距離行列:本番:parallel 4days 予定 *)
 dTab=ParallelTable[ Table[  eigenSpectrumDistance[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,Length[nameVSadjmatSel]}]; 
-(* 本番 10days 予定 *)
+(* 距離行列:本番:non-parallel 10days 予定 *)
 dTab=Table[ Table[  eigenSpectrumDistance[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,Length[nameVSadjmatSel]}]; 
 Save["dTab.wl",dTab]
-(* 本番 4days 予定 *)
-(* sTab=Table[ Table[  eigenSpectrumSim[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,Length[nameVSadjmatSel]}]; *)
+(* 近似行列:本番:parallel 5days 予定 *)
 sTab=ParallelTable[ Table[  eigenSpectrumSim[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,Length[nameVSadjmatSel]}];
+(* 近似行列:本番:non-parallel 12days 予定 *)
+sTab=Table[ Table[  eigenSpectrumSim[nameVSadjmatSel[[i]][[2]],nameVSadjmatSel[[j]][[2]]], {j,Length[nameVSadjmatSel]}] ,{i,Length[nameVSadjmatSel]}];
 Save["sTab.wl",sTab]
 
 (* ゼロ距離のペアのセレクション *)
