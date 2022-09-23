@@ -38,12 +38,13 @@ Save["sTab_a.wl",sTab]
 String[ボンドがない化合物がある->イオン結合は表示されない->水と水溶液が同じ->すべてが共有結合である化合物をChemicalData[]で選択可能か?}
 String[ ->もとの分子には薄く結合を入れてみる ]
 
-(* chenNameからadjMatを引く *)
+(* 分子名からadjMatを引く索引 *)
 nameToAdjm=Map[#[[1]]->#[[2]]&,nameVSadjmatSel];
 adjFromName=Association[nameToAdjm];
 
-(* 共通要素 *)
+(* 登録分子すべてを包含する共通原子集合 *)
+(** 共通要素原子 **)
 AdjmatSelTr=Map[Tr[#[[2]],List]&,nameVSadjmatSel];
 AdjmatSelTrUnion=Apply[seqUnionM,AdjmatSelTr];
-(* 共通要素を使ったexpand *)
+(** 共通要素原子を使い、行列へexpand **)
 adjmatSelExpand=Map[expandAdjMat[#,AdjmatSelTrUnion]&,adjmatSel];
